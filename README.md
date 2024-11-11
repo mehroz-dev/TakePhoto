@@ -1,50 +1,48 @@
 ## [TakePhoto](https://github.com/crazycodeboy/TakePhoto) 简介
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/crazycodeboy/TakePhoto/pulls)
-[![Download](https://api.bintray.com/packages/crazycodeboy/maven/TakePhoto/images/download.svg) ](https://bintray.com/crazycodeboy/maven/TakePhoto/_latestVersion)
-[![GitHub release](https://img.shields.io/github/release/crazycodeboy/TakePhoto.svg?maxAge=2592000?style=flat-square)](https://github.com/crazycodeboy/TakePhoto/releases)
-[![License Apache2.0](http://img.shields.io/badge/license-Apache2.0-brightgreen.svg?style=flat)](https://raw.githubusercontent.com/crazycodeboy/TakePhoto/master/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/mehroz-dev/TakePhoto/pulls)
+[![GitHub release](https://img.shields.io/github/release/mehroz-dev/TakePhoto.svg?maxAge=2592000?style=flat-square)](https://github.com/mehroz-dev/TakePhoto/releases)
+[![License Apache2.0](http://img.shields.io/badge/license-Apache2.0-brightgreen.svg?style=flat)](https://raw.githubusercontent.com/mehroz-dev/TakePhoto/master/LICENSE)
 
 
 
-`TakePhoto`是一款用于在Android设备上获取照片（拍照或从相册、文件中选择）、裁剪图片、压缩图片的开源工具库，目前最新版本[4.1.0](https://github.com/crazycodeboy/TakePhoto/)。
-3.0以下版本及API说明，详见[TakePhoto2.0+](https://github.com/crazycodeboy/TakePhoto/blob/master/README.2+.md)。  
+TakePhoto is an open-source tool library for Android devices that enables photo capture (taking a picture or selecting from the album or files), image cropping, and image compression. The latest version is currently available.[4.1.0](https://github.com/mehroz-dev/TakePhoto/)。See versions below 3.0 and the API documentation for details.[TakePhoto2.0+](https://github.com/mehroz-dev/TakePhoto/blob/master/README.2+.md)。  
 
->TakePhoto交流平台：QQ群：556387607（群1，未满）
+>TakePhoto Community Platform: QQ Group: 556387607 (Group 1, not full)
 
-**V4.0**
+V4.0
 
-- 支持通过相机拍照获取图片
-- 支持从相册选择图片
-- 支持从文件选择图片  
-- 支持批量图片选取
-- 支持图片压缩以及批量图片压缩
-- 支持图片裁切以及批量图片裁切
-- 支持照片旋转角度自动纠正
-- 支持自动权限管理(无需关心SD卡及摄像头权限等问题)
-- 支持对裁剪及压缩参数个性化配置  
-- 提供自带裁剪工具(可选)  
-- 支持智能选取及裁剪异常处理
-- 支持因拍照Activity被回收后的自动恢复   
-- 支持Android8.1
-- +支持多种压缩工具
-- +支持多种图片选择工具
+Supports capturing images via the camera
+Supports selecting images from the album
+Supports selecting images from files
+Supports batch selection of images
+Supports image compression and batch image compression
+Supports image cropping and batch image cropping
+Automatically corrects photo rotation angles
+Supports automatic permission management (no need to worry about SD card or camera permissions)
+Allows for personalized configuration of cropping and compression parameters
+Provides a built-in cropping tool (optional)
+Supports smart selection and handling of cropping exceptions
+Supports automatic recovery if the Activity for capturing photos is recycled
+Compatible with Android 8.1
+Supports multiple compression tools
+Supports multiple image selection tools
 
-GitHub地址： [https://github.com/crazycodeboy/TakePhoto](https://github.com/crazycodeboy/TakePhoto)
-## 目录
+GitHub address: [https://github.com/mehroz-dev/TakePhoto](https://github.com/mehroz-dev/TakePhoto)
+## Table of Contents
 
-- [安装说明](#安装说明)
-- [演示](#演示)
-- [使用说明](#使用说明)
-- [自定义UI](#自定义ui)
-- [API](#api)
-- [兼容性](#兼容性)
-- [贡献](#贡献)
-- [更新说明](#更新说明)
-- [最后](#混淆)
+Installation Instructions
+Demo
+Usage Instructions
+Custom UI
+API
+Compatibility
+Contributions
+Changelog
+Final Notes
+Installation Instructions
 
-## 安装说明  
-**Gradle:**  
+Gradle:
 
 ```groovy
     compile 'com.jph.takephoto:takephoto_library:4.1.0'
@@ -62,49 +60,42 @@ GitHub地址： [https://github.com/crazycodeboy/TakePhoto](https://github.com/c
 ```  
 
 
-## 演示 
 
-运行效果图：    
-![预览图](https://raw.githubusercontent.com/crazycodeboy/TakePhoto/master/Screenshots/takephoto_preview.png)
-![运行效果图](https://raw.githubusercontent.com/crazycodeboy/TakePhoto/master/Screenshots/%E9%A2%84%E8%A7%88%E5%9B%BE.jpg)
+Usage Instructions
+There are two ways to use TakePhoto:
+Method 1: By inheritance
 
-
-## 使用说明   
-
-### 使用TakePhoto有以下两种方式：
-**方式一：通过继承的方式**  
-1. 继承`TakePhotoActivity`、`TakePhotoFragmentActivity`、`TakePhotoFragment`三者之一。  
-2. 通过`getTakePhoto()`获取`TakePhoto`实例进行相关操作。  
-3. 重写以下方法获取结果        
+Inherit from one of the following: TakePhotoActivity, TakePhotoFragmentActivity, or TakePhotoFragment.
+Use getTakePhoto() to obtain a TakePhoto instance and perform the necessary operations.
+Override the following methods to get results.       
 
 ```java
  void takeSuccess(TResult result);
  void takeFail(TResult result,String msg);
  void takeCancel();
 ```  
-此方式使用简单，满足的大部分的使用需求，具体使用详见[simple](https://github.com/crazycodeboy/TakePhoto/blob/master/simple/src/main/java/com/jph/simple/SimpleActivity.java)。如果通过继承的方式无法满足实际项目的使用，可以通过下面介绍的方式。  
+This method is simple to use and meets most usage needs. For details, see[simple](https://github.com/mehroz-dev/TakePhoto/blob/master/simple/src/main/java/com/jph/simple/SimpleActivity.java)。If inheritance cannot meet the needs of an actual project, you can use the following method.
 
-**方式二：通过组装的方式**  
+Method 2: Using Composition
 
-可参照：[TakePhotoActivity](https://github.com/crazycodeboy/TakePhoto/blob/master/takephoto_library/src/main/java/com/jph/takephoto/app/TakePhotoActivity.java)，以下为主要步骤：  
+Refer to the following：[TakePhotoActivity](https://github.com/mehroz-dev/TakePhoto/blob/master/takephoto_library/src/main/java/com/jph/takephoto/app/TakePhotoActivity.java)，The main steps are as follows:  
 
-1.实现`TakePhoto.TakeResultListener,InvokeListener`接口。
+1. Implement the TakePhoto.TakeResultListener and InvokeListener interfaces.
 
-2.在 `onCreate`,`onActivityResult`,`onSaveInstanceState`方法中调用TakePhoto对用的方法。  
+2.Call the corresponding methods of TakePhoto in the onCreate, onActivityResult, and onSaveInstanceState methods.
 
-3.重写`onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)`，添加如下代码。
+3.Override onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) and add the following code.
 
 ```java
   @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //以下代码为处理Android6.0、7.0动态权限所需
         TPermissionType type=PermissionManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
         PermissionManager.handlePermissionsResult(this,type,invokeParam,this);
     }
 ```    
 
-4.重写`TPermissionType invoke(InvokeParam invokeParam)`方法，添加如下代码：  
+4. Override the TPermissionType invoke(InvokeParam invokeParam) method and add the following code:  
 
 ```java
  @Override
@@ -117,11 +108,11 @@ GitHub地址： [https://github.com/crazycodeboy/TakePhoto](https://github.com/c
     }
 ```
 
-5.添加如下代码获取TakePhoto实例：  
+5. Add the following code to obtain the TakePhoto instance:  
 
 ```java
    /**
-     *  获取TakePhoto实例
+     *  Obtain TakePhoto instance
      * @return
      */
     public TakePhoto getTakePhoto(){
@@ -132,16 +123,14 @@ GitHub地址： [https://github.com/crazycodeboy/TakePhoto](https://github.com/c
     }    
 ```
 
-## 自定义UI
+Custom UI
+TakePhoto not only supports customization of related parameters but also allows customization of the UI. Below is an introduction on how to customize the gallery and cropping tool UI of TakePhoto.
 
-TakePhoto不仅支持对相关参数的自定义，也支持对UI的自定义，下面就像大家介绍如何自定义TakePhoto的相册与裁剪工具的UI。
+Custom Gallery
+If the default gallery UI of TakePhoto does not match the theme of your application, you can customize it. The method is as follows:
 
-### 自定义相册
-如果TakePhoto自带相册的UI不符合你应用的主题的话，你可以对它进行自定义。方法如下：   
-
-#### 自定义Toolbar 
-
-在“res/layout”目录中创建一个名为“toolbar.xml”的布局文件，内容如下：   
+Custom Toolbar
+Create a layout file named "toolbar.xml" in the "res/layout" directory with the following content:：   
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -154,11 +143,10 @@ TakePhoto不仅支持对相关参数的自定义，也支持对UI的自定义，
 </android.support.v7.widget.Toolbar>
 ```
 
-在“toolbar.xml”文件中你可以指定TakePhoto自带相册的主题以及Toolbar的背景色。
+In the toolbar.xml file, you can specify the theme for the TakePhoto gallery and the background color of the Toolbar.
 
-#### 自定义状态栏
-
-在“res/values”目录中创建一个名为“colors.xml”的资源文件，内容如下： 
+Custom Status Bar
+Create a resource file named colors.xml in the res/values directory with the following content: 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -167,29 +155,27 @@ TakePhoto不仅支持对相关参数的自定义，也支持对UI的自定义，
 </resources>
 ```
 
-通过上述方式便可以自定义状态栏的颜色。
+By using the above method, you can customize the color of the status bar.
 
-#### 自定义提示文字
-
-在“res/values”目录的“string.xml”文件冲添加如下代码：
+Custom Tip Text
+In the string.xml file in the res/values directory, add the following code:
 
 ```xml
 <resources>    
-    <string name="album_view">选择图片</string>
-    <string name="image_view">单击选择</string>
-    <string name="add">确定</string>
-    <string name="selected">已选</string>
-    <string name="limit_exceeded">最多能选 %d 张</string>
+    <string name="album_view">Select Image</string>
+    <string name="image_view">Click to Select</string>
+    <string name="add">Confirm</string>
+    <string name="selected">Selected</string>
+    <string name="limit_exceeded">You can select up to %d images</string>
 </resources>
 ```
 
-重写上述代码，便可以自定义TakePhoto自带相册的提示文字。
+By overriding the above code, you can customize the tip text in the TakePhoto gallery.
 
-### 自定义裁切工具
+Custom Cropping Tool
+Create layout files named crop__activity_crop.xml and crop__layout_done_cancel.xml in the res/layout directory with the following content:
 
-在“res/layout”目录中创建一个名为“crop__activity_crop.xml”与“crop__layout_done_cancel.xml”的布局文件，内容如下：  
-
-**crop__activity_crop.xml**  
+crop__activity_crop.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -231,119 +217,118 @@ TakePhoto不仅支持对相关参数的自定义，也支持对UI的自定义，
 </LinearLayout>
 ```
 
-重写上述代码，便可以自定义TakePhoto裁切工具的UI。
+Override the above code to customize the UI of the TakePhoto cropping tool.
 
-## API
+API
+Get Image
+TakePhoto provides three methods to obtain images: from the camera, from the gallery, and from files.
 
-### 获取图片
-TakePhoto提供拍照，从相册选择，从文件中选择三种方式获取图片。    
-
-#### API:
+API:
 
 ```java
 /**
- * 从文件中获取图片（不裁剪）
+ * Get image from file (no cropping)
  */
 void onPickFromDocuments();
 /**
- * 从相册中获取图片（不裁剪）
+ * Get image from gallery (no cropping)
  */
 void onPickFromGallery();
 /**
- * 从相机获取图片(不裁剪)
- * @param outPutUri 图片保存的路径
+ * Get image from camera (no cropping)
+ * @param outPutUri The path where the image will be saved
  */
 void onPickFromCapture(Uri outPutUri);
 /**
- * 图片多选
- * @param limit 最多选择图片张数的限制
+ * Multi-image selection
+ * @param limit The maximum number of images that can be selected
  **/
 void onPickMultiple(int limit);
 ```
-以上三种方式均提供对应的裁剪API，详见：[裁剪图片](https://github.com/crazycodeboy/TakePhoto#裁剪图片)。    
-**注：**  
-由于不同Android Rom厂商对系统有不同程度的定制，有可能导致某种选择图片的方式不支持，所以为了提高`TakePhoto`的兼容性，当某种选的图片的方式不支持时，`TakePhoto`会自动切换成使用另一种选择图片的方式进行图片选择。      
 
-### 裁剪图片  
+The three methods above all provide corresponding cropping APIs.
 
-#### API  
-`TakePhoto`支持对图片进行裁剪，无论是拍照的照片,还是从相册、文件中选择的图片。你只需要调用`TakePhoto`的相应方法即可：  
+Note:
+Due to varying levels of system customization by different Android ROM manufacturers, some image selection methods may not be supported. To improve the compatibility of TakePhoto, when a specific image selection method is not supported, TakePhoto will automatically switch to another available method for selecting images.
+
+Crop Image
+API
+TakePhoto supports cropping images, whether the image is taken from the camera or selected from the gallery or files. You just need to call the corresponding method of TakePhoto:  
 
 ```java
 /**
- * 从相机获取图片并裁剪
- * @param outPutUri 图片裁剪之后保存的路径
- * @param options 裁剪配置             
+ * Get image from camera and crop
+ * @param outPutUri The path where the cropped image will be saved
+ * @param options Crop options
  */
 void onPickFromCaptureWithCrop(Uri outPutUri, CropOptions options);
 /**
- * 从相册中获取图片并裁剪
- * @param outPutUri 图片裁剪之后保存的路径
- * @param options 裁剪配置
+ * Get image from gallery and crop
+ * @param outPutUri The path where the cropped image will be saved
+ * @param options Crop options
  */
 void onPickFromGalleryWithCrop(Uri outPutUri, CropOptions options);
 /**
- * 从文件中获取图片并裁剪
- * @param outPutUri 图片裁剪之后保存的路径
- * @param options 裁剪配置
+ * Get image from file and crop
+ * @param outPutUri The path where the cropped image will be saved
+ * @param options Crop options
  */
 void onPickFromDocumentsWithCrop(Uri outPutUri, CropOptions options);
 /**
- * 图片多选，并裁切
- * @param limit 最多选择图片张数的限制
- * @param options  裁剪配置
- * */
+ * Multi-image selection and crop
+ * @param limit The maximum number of images that can be selected
+ * @param options Crop options
+ */
 void onPickMultipleWithCrop(int limit, CropOptions options);
 ```   
-#### 对指定图片进行裁剪     
-另外，TakePhoto也支持你对指定图片进行裁剪：     
+#### Crop a specific image
+Additionally, TakePhoto also supports cropping a specific image:     
 
 ```java
 /**
- * 裁剪图片
- * @param imageUri 要裁剪的图片
- * @param outPutUri 图片裁剪之后保存的路径
- * @param options 裁剪配置
+ * Crop an image
+ * @param imageUri The image to be cropped
+ * @param outPutUri The path where the cropped image will be saved
+ * @param options Crop options
  */
-void onCrop(Uri imageUri, Uri outPutUri, CropOptions options)throws TException;
+void onCrop(Uri imageUri, Uri outPutUri, CropOptions options) throws TException;
 /**
- * 裁剪多张图片
- * @param multipleCrop 要裁切的图片的路径以及输出路径
- * @param options 裁剪配置
+ * Crop multiple images
+ * @param multipleCrop The paths of the images to be cropped and their output paths
+ * @param options Crop options
  */
-void onCrop(MultipleCrop multipleCrop, CropOptions options)throws TException;
+void onCrop(MultipleCrop multipleCrop, CropOptions options) throws TException;
 ```
 
 #### CropOptions
-`CropOptions`是用于裁剪的配置类，通过它你可以对图片的裁剪比例，最大输出大小，以及是否使用`TakePhoto`自带的裁剪工具进行裁剪等，进行个性化配置。    
+CropOptions is a configuration class for cropping, through which you can customize settings such as the aspect ratio for cropping, maximum output size, and whether to use the built-in cropping tool of TakePhoto.
 
 **Usage:**  
 
 ```java
  CropOptions cropOptions=new CropOptions.Builder().setAspectX(1).setAspectY(1).setWithOwnCrop(true).create();  
  getTakePhoto().onPickFromDocumentsWithCrop(imageUri,cropOptions);  
- //或  
  getTakePhoto().onCrop(imageUri,outPutUri,cropOptions);  
 
 ```
 
-**注：**  
-由于不同Android Rom厂商对系统有不同程度的定制，有可能系统中没有自带或第三方的裁剪工具，所以为了提高`TakePhoto`的兼容性，当系统中没有自带或第三方裁剪工具时，`TakePhoto`会自动切换到使用`TakePhoto`自带的裁剪工具进行裁剪。  
+Note:
+Due to varying levels of system customization by different Android ROM manufacturers, the system may not have a built-in or third-party cropping tool. To improve the compatibility of TakePhoto, when no cropping tool is available, TakePhoto will automatically switch to using its own built-in cropping tool.
 
->另外TakePhoto4.0+支持指定使用TakePhoto自带相册,如：`takePhoto.setTakePhotoOptions(new TakePhotoOptions.Builder().setWithOwnGallery(true).create());`
-详情可参考:[Demo](https://github.com/crazycodeboy/TakePhoto/blob/master/simple/src/main/java/com/jph/simple/CustomHelper.java)
+Additionally, TakePhoto 4.0+ supports specifying the use of the built-in gallery. For example: takePhoto.setTakePhotoOptions(new TakePhotoOptions.Builder().setWithOwnGallery(true).create());
+For more details, refer to the documentation[Demo](https://github.com/mehroz-dev/TakePhoto/blob/master/simple/src/main/java/com/jph/simple/CustomHelper.java)
 
-### 压缩图片
-你可以选择是否对图片进行压缩处理，你只需要告诉它你是否要启用压缩功能以及`CompressConfig`即可。  
+Compress Image
+You can choose whether to compress the image. You only need to specify whether to enable the compression feature and provide the CompressConfig.  
 
 #### API
 ```java
  /**
-  * 启用图片压缩
-  * @param config 压缩图片配置
-  * @param showCompressDialog 压缩时是否显示进度对话框
-  * @return
-  */
+ * Enable image compression
+ * @param config The image compression configuration
+ * @param showCompressDialog Whether to show the progress dialog during compression
+ * @return
+ */
  void onEnableCompress(CompressConfig config,boolean showCompressDialog);
 ```
 
@@ -354,76 +339,72 @@ TakePhoto takePhoto=getTakePhoto();
 takePhoto.onEnableCompress(compressConfig,true);
 takePhoto.onPickFromGallery();
 ```  
-如果你启用了图片压缩，`TakePhoto`会使用`CompressImage`对图片进行压缩处理，`CompressImage`目前支持对图片的尺寸以及图片的质量进行压缩。默认情况下，`CompressImage`开启了尺寸与质量双重压缩。  
+If you enable image compression, `TakePhoto` will use `CompressImage` to compress the image. `CompressImage` currently supports compressing both the size and quality of the image. By default, `CompressImage` enables both size and quality compression.
 
-#### 对指定图片进行压缩  
-另外，你也可以对指定图片进行压缩：    
+#### Compress a specific image  
+Additionally, you can also compress a specific image:    
 **Usage:**  
 
 ```java
 new CompressImageImpl(compressConfig,result.getImages(), new CompressImage.CompressListener() {
     @Override
     public void onCompressSuccess(ArrayList<TImage> images) {
-        //图片压缩成功
     }
     @Override
     public void onCompressFailed(ArrayList<TImage> images, String msg) {
-        //图片压缩失败
     }
 }).compress();
 ```
 
 #### CompressConfig  
-`CompressConfig`是用于图片压缩的配置类，你可以通过`CompressConfig.Builder`对图片压缩后的尺寸以及质量进行相关设置。如果你想改变压缩的方式可以通过`CompressConfig.Builder`进行相关设置。     
+`CompressConfig` is a configuration class for image compression. You can use `CompressConfig.Builder` to set the dimensions and quality of the compressed image. If you want to change the compression method, you can make relevant settings using `CompressConfig.Builder`.
+
+
 **Usage:**   
 
 ```java
 CompressConfig compressConfig=new CompressConfig.Builder().setMaxSize(50*1024).setMaxPixel(800).create();
 ```
-#### 指定压缩工具
-
-#### 使用TakePhoto压缩工具进行压缩： 
+Specifying Compression Tools
+Using TakePhoto Compression Tool:
 
 ```
-CompressConfig config=new CompressConfig.Builder()
+CompressConfig config = new CompressConfig.Builder()
                     .setMaxSize(maxSize)
-                    .setMaxPixel(width>=height? width:height)
+                    .setMaxPixel(width >= height ? width : height)
                     .create();
-takePhoto.onEnableCompress(config,showProgressBar);
+takePhoto.onEnableCompress(config, showProgressBar);
 ```
 
-#### 使用Luban进行压缩： 
+Using Luban for Compression: 
 ```
-LubanOptions option=new LubanOptions.Builder()
+LubanOptions option = new LubanOptions.Builder()
                     .setGear(Luban.CUSTOM_GEAR)
                     .setMaxHeight(height)
                     .setMaxWidth(width)
                     .setMaxSize(maxSize)
                     .create();
-CompressConfig config=CompressConfig.ofLuban(option);
-takePhoto.onEnableCompress(config,showProgressBar);
+CompressConfig config = CompressConfig.ofLuban(option);
+takePhoto.onEnableCompress(config, showProgressBar);
 ```
 
->详情可参考Demo:[CustomHelper.java](https://github.com/crazycodeboy/TakePhoto/blob/master/simple/src/main/java/com/jph/simple/CustomHelper.java)
+For more details, refer to the demo:[CustomHelper.java](https://github.com/mehroz-dev/TakePhoto/blob/master/simple/src/main/java/com/jph/simple/CustomHelper.java)
 
 
-## 兼容性
+Compatibility
+Android 6.0
+With the introduction of "Runtime Permissions" in Android 6.0, TakePhoto added automatic permission management. When TakePhoto detects a permission is needed, it will automatically request it, so you don’t need to worry about permission issues.
 
-### Android6.0
-由于Android6.0新增了"运行时权限控制(Runtime Permissions)"，为了应对这一改变，TakePhoto加入和自动权限管理，当TakePhoto检测到需要权限时，TakePhoto会自动申请权限，所以小伙伴们不用担心权限的使用问题。
+Android 7.0
+In Android N, Android implemented StrictMode, which changed how files are shared between apps. To adapt to these changes and make it easier for users, TakePhoto automatically adjusts based on the phone’s Android version. You can still pass Uri imageUri = Uri.fromFile(file); to TakePhoto without worrying about compatibility issues.
 
-### Android7.0  
+Achieving Higher Compatibility
+TakePhoto is written based on the official Android API standards and supports most mainstream ROMs in the market. If you encounter any compatibility issues during use, you can submit Issues.
 
-在Android N中，Android 框架执行了 StrictMode，应用间共享文件和以前也有所区别。为了适配Android7.0的改变，同时也为了方便大家使用TakePhoto，TakePhoto会自动根据手机的Android版本自行适配，小伙伴们依旧可以向TakePhoto传递`Uri imageUri = Uri.fromFile(file);`类型的Uri而不用担心兼容性问题。
-
-### TakePhoto在深度兼容性方面的测试    
-![兼容性测试报告](https://raw.githubusercontent.com/crazycodeboy/TakePhoto/master/Screenshots/%E5%85%BC%E5%AE%B9%E6%80%A7%E6%B5%8B%E8%AF%95.jpg)
-
-### 获取更高的兼容性    
-`TakePhot`o是基于Android官方标准API编写的，适配了目前市场上主流的Rom。如果你在使用过程中发现了适配问题，可以[提交Issues](https://github.com/crazycodeboy/TakePhoto/issues)。   
-1. 为适配部分手机拍照时会回收`Activity`，`TakePhoto`在`onSaveInstanceState`与 `onCreate`做了相应的恢复处理。  
-2. 为适配部分手机拍照或从相册选择图片时屏幕方向会发生转变,从而导致拍照失败的问题，可以在AndroidManifest.xml中对使用了`TakePhoto`的`Activity`添加android:configChanges="orientation|keyboardHidden|screenSize"配置。  
-eg:  
+To adapt to phones that may recycle the Activity during photo capture, TakePhoto performs recovery handling in onSaveInstanceState and onCreate.
+To adapt to phones where the screen orientation changes when taking a photo or selecting an image from the gallery, causing the photo to fail, you can add the following configuration in AndroidManifest.xml for the Activity using TakePhoto:
+android:configChanges="orientation|keyboardHidden|screenSize"
+Example:
 
 ```
 <activity
@@ -437,11 +418,10 @@ eg:
     </intent-filter>
 </activity>
 ```
+Contributions
+If you encounter any issues while using TakePhoto, you can submit Issues. Contributions to TakePhoto are also welcome, feel free to Fork and Submit Pull Requests.
 
-## 贡献  
-如果你在使用TakePhoto中遇到任何问题可以提[Issues](https://github.com/crazycodeboy/TakePhoto/issues)出来。另外欢迎大家为TakePhoto贡献智慧，欢迎大家[Fork and Pull requests](https://github.com/crazycodeboy/TakePhoto)。     
-
-## 更新说明
+Update Log
 
 v4.1.0(2018/4/2)
 -----------------
@@ -450,26 +430,15 @@ v4.1.0(2018/4/2)
 2. Upgrade  buildToolsVersion & targetSdkVersion ；
 3. rename package name ;
 
-v4.0.3(2017/1/18)
------------------
-**Bugfixes**
-
-1. Fixed bug and add new features([`62a6725`](https://github.com/crazycodeboy/TakePhoto/commit/62a6725a99118ec0ce0f4cf1cd76b2ba70e21745))-@[Yanqilong](https://github.com/Yanqilong)
-2. fix 鲁班压缩出现路径重复([`a0a64a59`](https://github.com/crazycodeboy/TakePhoto/commit/a0a64a59762fa8554eb46b6ec544f70a5d46f551))-@[namezhouyu](https://github.com/namezhouyu)
-
-
-v4.0.2(2016/11/28)
-------------------
-1. 压缩成功后返回原图路径(originalPath), 以便用户可以自行处理原图。
-2. 压缩成功后压缩路径path改为compressPath。
-3. 压缩成功后返回图片来源类型，现在分CAMERA, OTHER两种。
-4. 用户可以配置CompressConfig.enableReserveRaw(boolean)方法，ture保留原图，false删除原图，当且仅当类型为CAMERA此配置才有效
-5. 纠正拍照旋转角度功能改为可选
-
-## 最后
-
-### 关于代码混淆
-如果你的项目中启用了代码混淆，可在混淆规则文件(如：proguard-rules.pro)中添加如下代码：   
+v4.0.3 (2017/1/18)
+After successful compression, return the original image path (originalPath) so the user can process the original image themselves.
+After successful compression, change the compressed path from path to compressPath.
+After successful compression, return the image source type, now categorized as CAMERA or OTHER.
+Users can configure CompressConfig.enableReserveRaw(boolean) method, set true to retain the original image, false to delete the original image. This configuration only works if the source type is CAMERA.
+Corrected the camera rotation angle feature to be optional.
+Final Notes
+Code Obfuscation
+If you have enabled code obfuscation in your project, you can add the following code to your obfuscation rules file (e.g., proguard-rules.pro):   
 
 ```
 -keep class com.jph.takephoto.** { *; }
